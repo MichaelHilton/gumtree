@@ -9,7 +9,7 @@ public class Permute extends Addition {
 	}
 
 	@Override
-	protected String getName() {
+	public String getName() {
 		return "PER";
 	}
 

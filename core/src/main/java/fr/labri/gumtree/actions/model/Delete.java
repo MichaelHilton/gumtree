@@ -9,7 +9,7 @@ public class Delete extends Action {
 	}
 
 	@Override
-	protected String getName() {
+	public String getName() {
 		return "DEL";
 	}
 

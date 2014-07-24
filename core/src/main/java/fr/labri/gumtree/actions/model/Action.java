@@ -18,8 +18,9 @@ public abstract class Action {
 		this.node = node;
 	}
 
-	protected abstract String getName();
+	public abstract String getName();
 	
 	public abstract String toString();
+	
 	
 }

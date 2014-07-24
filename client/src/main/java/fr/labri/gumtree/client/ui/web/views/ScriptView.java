@@ -26,6 +26,10 @@ public class ScriptView implements Renderable {
 	private File fDst;
 	
 	private List<Action> script;
+
+    public List<Action> getScript(){
+        return script;
+    }
 	
 	public ScriptView(File fSrc, File fDst) throws IOException {
 		this.fSrc = fSrc;
