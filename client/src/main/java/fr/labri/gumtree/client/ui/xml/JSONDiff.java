@@ -36,7 +36,7 @@ public class JSONDiff {
 		extension = extIn;
 	}
 
-	public void start() {		
+	public JSONArray start() {		
 		this.fSrc = getTempFileFromString(src);
 		this.fDst = getTempFileFromString(dest);
 		Tree src = null;
@@ -54,7 +54,8 @@ public class JSONDiff {
 		g.generate();
 		JSONArray JSONActions = getJSONActions(g.getActions());
 		//this.script = g.getActions();
-		System.out.println(JSONActions);
+		//System.out.println(JSONActions);
+		return JSONActions;
 	}
 
     //THIS IS WHERE JSON CAN BE EXPANDED
