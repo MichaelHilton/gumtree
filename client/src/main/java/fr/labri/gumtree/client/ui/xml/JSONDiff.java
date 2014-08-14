@@ -7,6 +7,7 @@ import java.io.IOException;
 import java.util.List;
 import java.util.UUID;
 
+import org.apache.commons.lang3.StringEscapeUtils;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 
@@ -58,19 +59,23 @@ public class JSONDiff {
 		return JSONActions;
 	}
 
+	private String escapeForJavascript(String unescaped){
+		return StringEscapeUtils.escapeEcmaScript(unescaped);
+	}
+	
     //THIS IS WHERE JSON CAN BE EXPANDED
 	private JSONArray getJSONActions(List<Action> actions) {
 		JSONArray jsA = new JSONArray();
 		for (Action action : actions) { 
-			System.out.println(action);
+			//System.out.println(action);
 			JSONObject jObj = new JSONObject();
-			jObj.put("Action", action.getName());
+			jObj.put("Action", escapeForJavascript(action.getName()));
 			Tree n = action.getNode();
-			jObj.put("Node", n.getLabel());
+			jObj.put("Node", escapeForJavascript(n.getLabel()));
 			jObj.put("Position",n.getPos());
-            jObj.put("TypeLabel",n.getTypeLabel());
-            jObj.put("Id", n.getId());
-            jObj.put("parentID", n.getParent().getId());
+            jObj.put("TypeLabel",escapeForJavascript(n.getTypeLabel()));
+            jObj.put("Id",n.getId());
+            jObj.put("parentID",n.getParent().getId());
 			jsA.add(jObj);
 		}
 		return jsA;
